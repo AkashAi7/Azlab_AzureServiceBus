@@ -21,8 +21,8 @@ def setup():
 
     # Azure Service Bus details
     global sb_namespace, sb_queue
-    sb_namespace = "sample_namespace" + str(os.environ.get("RAND"))
-    sb_queue = "samplequeue"
+    sb_namespace = "samplenamespaceakstest" + str(os.environ.get("RAND"))
+    sb_queue = "samplequeueaks"
     create_resource_group(resource_group, location)
 
         # Create AKS Cluster
