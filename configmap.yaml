@@ -8,7 +8,7 @@ data:
     import os
     connection_string = os.getenv("SERVICE_BUS_CONNECTION_STRING")
     servicebus_client = ServiceBusClient.from_connection_string(conn_str=connection_string)
-    sender = servicebus_client.get_queue_sender(queue_name="orders")
+    sender = servicebus_client.get_queue_sender(queue_name="samplequeueaks")
     message = ServiceBusMessage("Hello from Kubernetes updated cron job every 1 min!")
     sender.send_messages(message)
     print("Message sent successfully!")
