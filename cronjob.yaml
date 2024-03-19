@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 apiVersion: batch/v1
 kind: CronJob
 metadata:
@@ -32,38 +31,3 @@ spec:
               items:
               - key: send_message.py
                 path: ./send_message.py
-=======
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: service-bus-sender-job
-spec:
-  schedule: "* * * * *"
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-          - name: service-bus-sender
-            image: python:3.9-slim
-            command:
-            - /bin/sh
-            - -c
-            args:
-            - pip install azure-servicebus && python /scripts/send_message.py
-            env:
-            - name: SERVICE_BUS_CONNECTION_STRING
-              value: Endpoint=sb://sb-store-demo-none.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QQVYHUYfsABB4ylV8ZhcKCSLOT1YCC0hw+ASbBST1Us=
-            volumeMounts:
-            - name: script-volume
-              mountPath: /scripts
-              readOnly: true
-          restartPolicy: OnFailure
-          volumes:
-          - name: script-volume
-            configMap:
-              name: script-configmap
-              items:
-              - key: send_message.py
-                path: ./send_message.py
->>>>>>> 286d385107625b23ee4d40186c740ddccdc828ef

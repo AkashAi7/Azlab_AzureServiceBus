@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -15,21 +14,3 @@ data:
     print("Message sent successfully!")
     sender.close()
     servicebus_client.close()
-=======
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: script-configmap
-data:
-  send_message.py: |
-    from azure.servicebus import ServiceBusClient, ServiceBusMessage
-    import os
-    connection_string = os.getenv("SERVICE_BUS_CONNECTION_STRING")
-    servicebus_client = ServiceBusClient.from_connection_string(conn_str=connection_string)
-    sender = servicebus_client.get_queue_sender(queue_name="orders")
-    message = ServiceBusMessage("Hello from Kubernetes updated cron job every 1 min!")
-    sender.send_messages(message)
-    print("Message sent successfully!")
-    sender.close()
-    servicebus_client.close()
->>>>>>> 286d385107625b23ee4d40186c740ddccdc828ef
