@@ -168,7 +168,7 @@ def update():
     - new_connection_string (str): New value for SERVICE_BUS_CONNECTION_STRING.
     """
     #yaml_file = r"./Azlab_AzureServiceBus/cronjob.yaml"
-    yaml_file = os.path.abspath(r".\cronjob.yaml")
+    yaml_file = os.path.abspath(r"./cronjob.yaml")
     conn_str="Endpoint=sb://sb-store-demo-none.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=jIGQ1ycyqhka7qQPsXuQXv0tgZn/hIIEm+ASbLu0B7g="
     new_connection_string = conn_str
      # Load the YAML content
@@ -185,13 +185,9 @@ def update():
 
     # Apply the YAML configuration using kubectl
     subprocess.run(f"kubectl apply -f {yaml_file} --validate=false", shell=True)
-    yaml_file = os.path.abspath(r".\configmap.yaml") 
+    yaml_file = os.path.abspath(r"./configmap.yaml") 
     #yaml_file = r"./Azlab_AzureServiceBus/configmap.yaml"
     subprocess.run(f"kubectl apply -f {yaml_file} --validate=false", shell=True)
-
-
-
-update()
 
 
 
